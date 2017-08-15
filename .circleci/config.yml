@@ -48,22 +48,16 @@ jobs:
           name: Run Tests
           command: vendor/bin/phpunit
                 # Deploy production
-      - deploy:
-          command: |
-            apt-get update && apt-get install -y awscli
-            if [ "${CIRCLE_BRANCH}" == "master" ]; then 
-              aws s3 sync . s3://codedeploy-thuannd
-            fi
-deployment:
-  staging:
-    branch: master
-    codedeploy:
-      circleci-thuannd:
-        application_root: /
-        region: ap-southeast-1
-        revision_location:
-          revision_type: S3
-          s3_location:
-            bucket: codedeploy-thuannd
-            key_pattern: circleci-thuannd-{BRANCH}-{SHORT_COMMIT}
-        deployment_group: circleci-thuannd
+  deployment:
+    production:
+      branch: master
+      codedeploy:
+        circleci-thuannd:
+          application_root: /
+          region: ap-southeast-1
+          revision_location:
+            revision_type: S3
+            s3_location:
+              bucket: codedeploy-thuannd
+              key_pattern: circleci-thuannd-{BRANCH}-{SHORT_COMMIT}
+          deployment_group: circleci-thuannd
