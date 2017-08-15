@@ -50,6 +50,6 @@ jobs:
                 # Deploy production
       - deploy:
           command: |
-            if [ "${CIRCLE_BRANCH}" == "master" ];
-              then aws s3 sync demoAppCircleCIv2 s3://codedeploy-thuannd
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then 
+              aws s3 sync . s3://codedeploy-thuannd
             fi
