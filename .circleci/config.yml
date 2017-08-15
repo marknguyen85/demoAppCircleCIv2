@@ -48,6 +48,10 @@ jobs:
           name: Run Tests
           command: vendor/bin/phpunit
                 # Deploy production
+      - run:
+          name: install aws cli
+          comman: |
+            apt-get update && apt-get install -y awscli
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then 
