@@ -48,12 +48,9 @@ jobs:
           name: Run Tests
           command: vendor/bin/phpunit
                 # Deploy production
-      - run:
-          name: install aws cli
-          comman: |
-            apt-get update && apt-get install -y awscli
       - deploy:
           command: |
+            apt-get update && apt-get install -y awscli
             if [ "${CIRCLE_BRANCH}" == "master" ]; then 
               aws s3 sync . s3://codedeploy-thuannd
             fi
