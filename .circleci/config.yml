@@ -53,4 +53,3 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ];
               then aws s3 sync demoAppCircleCIv2 s3://codedeploy-thuannd
             fi
-
