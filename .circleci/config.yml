@@ -51,7 +51,7 @@ jobs:
       - run: |
           set -xu
           mkdir -p /tmp/artifacts
-          cp /var/www/html /tmp/artifacts
+          cp -r /var/www/html /tmp/artifacts
           ls
       - store_artifacts:
           path: /tmp/artifacts
