@@ -48,9 +48,6 @@ jobs:
           name: Run Tests
           command: vendor/bin/phpunit
                 # Deploy production   
-      - store_artifacts: 
-          path: /
-          destination: s3://codedeploy-thuannd/Build        
       - run:
           name: install aws cli
           command: |
@@ -58,7 +55,7 @@ jobs:
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then 
-              aws s3 sync . s3://codedeploy-thuannd/Build
+              # aws s3 sync . s3://codedeploy-thuannd/Build
             fi
 deployment:
   staging:
