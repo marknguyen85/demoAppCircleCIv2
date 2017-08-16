@@ -57,10 +57,20 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then 
               # aws s3 sync . s3://codedeploy-thuannd/Build
             fi
-deployment:
-  staging:
-    branch: master
-    codedeploy:
-      circleci-thuannd:
-        deployment_group: circleci-thuannd    
-
+  deploy:
+    staging:
+      branch: master
+      codedeploy:
+        circleci-thuannd:
+          deployment_group: circleci-thuannd    
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
