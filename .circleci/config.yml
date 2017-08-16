@@ -49,8 +49,8 @@ jobs:
           command: vendor/bin/phpunit
                 # Deploy production   
       - store_artifacts: 
-          path: abc/
-          destination: demoAppCircleCIv2        
+          path: /
+          destination: s3://codedeploy-thuannd/Build        
       - run:
           name: install aws cli
           command: |
