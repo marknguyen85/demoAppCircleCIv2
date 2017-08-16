@@ -47,7 +47,10 @@ jobs:
       - run:
           name: Run Tests
           command: vendor/bin/phpunit
-                # Deploy production      
+                # Deploy production   
+      - store_artifacts: 
+          path: abc/
+          destination: demoAppCircleCIv2        
       - run:
           name: install aws cli
           command: |
