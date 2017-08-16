@@ -48,6 +48,10 @@ jobs:
           name: Run Tests
           command: vendor/bin/phpunit
                 # Deploy production   
+      # Save artifacts
+      - store_artifacts:
+          path: /tmp/artifacts
+          destination: build
       - run:
           name: install aws cli
           command: |
@@ -57,9 +61,3 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then 
               # aws s3 sync . s3://codedeploy-thuannd/Build
             fi
-  deploy:
-    staging:
-      branch: master
-      codedeploy:
-        circleci-thuannd:
-          deployment_group: circleci-thuannd    
