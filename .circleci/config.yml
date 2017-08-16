@@ -61,6 +61,6 @@ deployment:
   staging:
     branch: master
     codedeploy:
-	    circleci-thuannd:
-	      deployment_group: circleci-thuannd    
+      circleci-thuannd:
+        deployment_group: circleci-thuannd    
 
