@@ -61,5 +61,5 @@ jobs:
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then 
-              aws s3 sync /tmp/artifacts s3://codedeploy-thuannd/Build
+              #aws s3 sync /tmp/artifacts s3://codedeploy-thuannd/Build
             fi
