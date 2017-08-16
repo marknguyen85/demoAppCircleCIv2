@@ -52,7 +52,9 @@ jobs:
           set -xu
           apt-get update && apt-get install -y zip
           mkdir -p /tmp/artifacts
-          zip -r /tmp/artifacts/data.zip /
+          cd /var/www/html
+          ls
+          zip -r /tmp/artifacts/data.zip /var/www/html
           cp /tmp/artifacts/data.zip /artifacts
       - store_artifacts:
           path: /tmp/artifacts
