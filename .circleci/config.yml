@@ -64,5 +64,5 @@ jobs:
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then 
-              aws s3 sync /tmp/artifacts/data.zip s3://codedeploy-thuannd/Build
+              aws s3 cp /tmp/artifacts/data.zip s3://codedeploy-thuannd/Build/${SHORT_COMMIT}{BUILD_NUM}.zip
             fi
