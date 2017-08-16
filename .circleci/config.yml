@@ -51,6 +51,7 @@ jobs:
       - run: |
           set -xu
           mkdir -p /tmp/artifacts
+          ls
       - store_artifacts:
           path: /tmp/artifacts
       - run:
