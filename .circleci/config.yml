@@ -47,10 +47,12 @@ jobs:
       - run:
           name: Run Tests
           command: vendor/bin/phpunit
-                # Deploy production
-deployment:
-  staging:
-    branch: master
-    codedeploy:
-      circleci-thuannd:
-        deployment_group: circleci-thuannd
+                # Deploy production                
+      - run:
+          name: Deploy
+          deployment:
+            staging:
+              branch: master
+              codedeploy:
+                circleci-thuannd:
+                  deployment_group: circleci-thuannd       
