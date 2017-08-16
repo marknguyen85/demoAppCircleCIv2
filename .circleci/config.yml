@@ -54,9 +54,10 @@ jobs:
             apt-get update && apt-get install -y awscli
       - deploy:
           name: Deploy
-          deployment:
-            staging:
-              branch: master
-              codedeploy:
-                circleci-thuannd:
-                  deployment_group: circleci-thuannd       
+deployment:
+  staging:
+    branch: master
+    codedeploy:
+	    circleci-thuannd:
+	      deployment_group: circleci-thuannd    
+
