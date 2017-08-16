@@ -52,8 +52,8 @@ jobs:
           set -xu
           apt-get update && apt-get install -y zip
           mkdir -p /tmp/artifacts
-          zip -r /tmp/artifacts/{SHORT_COMMIT}{BUILD_NUM}.zip /var/www/html/*
-          cp /tmp/artifacts/{SHORT_COMMIT}{BUILD_NUM}.zip /artifacts
+          zip -r /tmp/artifacts/data.zip /var/www/html/*
+          cp /tmp/artifacts/data.zip /artifacts
           ls
       - store_artifacts:
           path: /tmp/artifacts
@@ -64,5 +64,5 @@ jobs:
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then 
-              # aws s3 sync /tmp/artifacts s3://codedeploy-thuannd/Build
+              aws s3 sync /tmp/artifacts/data.zip s3://codedeploy-thuannd/Build
             fi
