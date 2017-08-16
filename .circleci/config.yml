@@ -48,7 +48,7 @@ jobs:
           name: Run Tests
           command: vendor/bin/phpunit
                 # Deploy production                
-      - run:
+      - deploy:
           name: Deploy
           deployment:
             staging:
