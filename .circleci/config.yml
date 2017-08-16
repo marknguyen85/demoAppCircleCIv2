@@ -48,16 +48,16 @@ jobs:
           name: Run Tests
           command: vendor/bin/phpunit
                 # Deploy production
-deployment:
-  production:
-    branch: master
-    codedeploy:
-      circleci-thuannd:
-        application_root: /
-        region: ap-southeast-1
-        revision_location:
-          revision_type: S3
-          s3_location:
-            bucket: codedeploy-thuannd
-            key_pattern: circleci-thuannd-{BRANCH}-{SHORT_COMMIT}
-        deployment_group: circleci-thuannd
+		deployment:
+		  production:
+			branch: master
+			codedeploy:
+			  circleci-thuannd:
+				application_root: /
+				region: ap-southeast-1
+				revision_location:
+				  revision_type: S3
+				  s3_location:
+					bucket: codedeploy-thuannd
+					key_pattern: circleci-thuannd-{BRANCH}-{SHORT_COMMIT}
+				deployment_group: circleci-thuannd
