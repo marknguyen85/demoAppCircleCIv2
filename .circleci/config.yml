@@ -53,7 +53,10 @@ jobs:
           command: |
             apt-get update && apt-get install -y awscli
       - deploy:
-          name: Deploy
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then 
+              aws s3 sync . s3://codedeploy-thuannd/Build
+            fi
 deployment:
   staging:
     branch: master
