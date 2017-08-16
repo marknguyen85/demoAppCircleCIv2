@@ -54,7 +54,7 @@ jobs:
           mkdir -p /tmp/artifacts
           cd /var/www/html
           ls
-          zip -r /tmp/artifacts/data.zip /var/www/html
+          zip -r /tmp/artifacts/data.zip *
           cp /tmp/artifacts/data.zip /artifacts
       - store_artifacts:
           path: /tmp/artifacts
