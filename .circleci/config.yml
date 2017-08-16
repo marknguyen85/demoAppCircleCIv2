@@ -63,14 +63,3 @@ jobs:
       codedeploy:
         circleci-thuannd:
           deployment_group: circleci-thuannd    
-workflows:
-  version: 2
-  build_and_test:
-    jobs:
-      - build
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only: master
