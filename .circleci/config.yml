@@ -51,11 +51,7 @@ jobs:
       - run: |
           set -xu
           mkdir -p /tmp/artifacts
-          cp / /tmp/artifacts
-      # Save artifacts
-      - store_artifacts:
-          path: /tmp/artifacts
-          destination: build
+          cp /* /tmp/artifacts
       - run:
           name: install aws cli
           command: |
