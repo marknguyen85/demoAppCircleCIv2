@@ -50,8 +50,10 @@ jobs:
                 # Deploy production   
       - run: |
           set -xu
+          apt-get update && apt-get install -y zip
           mkdir -p /tmp/artifacts
-          cp -r /var/www/html /tmp/artifacts
+          $  zip -r data.zip /var/www/html/*
+          cp -r /tmp/artifacts/data.zip /artifacts
           ls
       - store_artifacts:
           path: /tmp/artifacts
@@ -62,5 +64,5 @@ jobs:
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then 
-              #aws s3 sync /tmp/artifacts s3://codedeploy-thuannd/Build
+              # aws s3 sync /tmp/artifacts s3://codedeploy-thuannd/Build
             fi
