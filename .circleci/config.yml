@@ -66,8 +66,14 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then 
               aws s3 cp /tmp/artifacts/data.zip s3://codedeploy-thuannd/Build/data.zip
             fi
+      - run:
+          name: register-application-revision
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then 
+              aws deploy register-application-revision --application-name "circleci-thuannd" --s3-location bucket=codedeploy-thuannd,bundleType=zip,key=build/data.zip --description "master (#a4d2fa4)"
+            fi
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then 
-              aws deploy create-deployment --application-name circleci-thuannd --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name circleci-thuannd --description "My demo deployment" --s3-location bucket=codedeploy-thuannd/Build,bundleType=zip,key=data.zip
+              aws deploy create-deployment --application-name "circleci-thuannd" --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name "circleci-thuannd" --description "My demo deployment" --s3-location bucket=codedeploy-thuannd,bundleType=zip,key=build/data.zip
             fi
