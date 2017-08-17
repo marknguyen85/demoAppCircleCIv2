@@ -48,12 +48,13 @@ jobs:
           name: Run Tests
           command: vendor/bin/phpunit
                 # Deploy production   
-      - run: |
+      - run:
+          name: zip code
+          command: |
           set -xu
           apt-get update && apt-get install -y zip
           mkdir -p /tmp/artifacts
           cd /var/www/html
-          ls
           zip -r /tmp/artifacts/data.zip *
           cp /tmp/artifacts/data.zip /artifacts
       - run:
@@ -70,7 +71,7 @@ jobs:
           name: register-application-revision
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then 
-              aws deploy register-application-revision --application-name "circleci-thuannd" --s3-location bucket=codedeploy-thuannd,bundleType=zip,key=build/data.zip --description "master (#a4d2fa4)"
+              aws deploy register-application-revision --application-name "circleci-thuannd" --s3-location "bucket=codedeploy-thuannd,bundleType=zip,key=build/data.zip" --description "master (#a4d2fa4)"
             fi
       - deploy:
           command: |
