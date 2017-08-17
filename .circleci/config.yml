@@ -73,9 +73,9 @@ jobs:
           name: config aws
           command: |
               aws configure 
-              AWS Access Key ID [None]: ${AWS_KEY}
-              AWS Secret Access Key [None]: ${AWS_S_KEY}
-              Default region name [None]: ${AWS_REGION}
+              AWS Access Key ID [None]: ${aws_access_key_id}
+              AWS Secret Access Key [None]: ${aws_secret_access_key}
+              Default region name [None]: ${region}
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
