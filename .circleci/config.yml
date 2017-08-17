@@ -51,12 +51,12 @@ jobs:
       - run:
           name: zip code
           command: |
-          set -xu
-          apt-get update && apt-get install -y zip
-          mkdir -p /tmp/artifacts
-          cd /var/www/html
-          zip -r /tmp/artifacts/data.zip *
-          cp /tmp/artifacts/data.zip /artifacts
+            set -xu
+            apt-get update && apt-get install -y zip
+            mkdir -p /tmp/artifacts
+            cd /var/www/html
+            zip -r /tmp/artifacts/data.zip *
+            cp /tmp/artifacts/data.zip /artifacts
       - run:
           name: install aws cli
           command: |
