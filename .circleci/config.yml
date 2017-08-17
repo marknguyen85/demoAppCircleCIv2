@@ -60,7 +60,7 @@ jobs:
       - run:
           name: install aws cli
           command: |
-            apt-get install -y python3-pip
+            apt-get update && apt-get install -y python3-pip
             pip3 install awscli
             apt-get update && apt-get install -y awscli
       - run:
@@ -72,7 +72,7 @@ jobs:
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then 
-              aws configure
+              aws configure 
               AWS Access Key ID [None]: ${AWS_KEY}
               AWS Secret Access Key [None]: ${AWS_S_KEY}
               Default region name [None]: ${AWS_REGION}
