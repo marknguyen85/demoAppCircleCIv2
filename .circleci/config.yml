@@ -72,5 +72,9 @@ jobs:
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then 
+              aws configure
+              AWS Access Key ID [None]: ${AWS_KEY}
+              AWS Secret Access Key [None]: ${AWS_S_KEY}
+              Default region name [None]: ${AWS_REGION}
               aws deploy create-deployment --application-name circleci-thuannd --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name circleci-thuannd --description "My demo deployment" --s3-location bucket=codedeploy-thuannd,bundleType=zip,key=Build/data.zip
             fi
