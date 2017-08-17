@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: infrastructure-as-code/docker-aws-cli
+      - image: php:7.0-apache
         environment:
           APP_ENV: local
           APP_DEBUG: true
