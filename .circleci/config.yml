@@ -69,5 +69,5 @@ jobs:
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then 
-              aws deploy create-deployment circleci-thuannd CodeDeployDefault.OneAtATime circleci-thuannd "My demo deployment" bucket=codedeploy-thuannd/Build,bundleType=zip,key=data.zip
+              aws deploy create-deployment --application-name circleci-thuannd --deployment-config-name CodeDeployDefault.OneAtATime --deployment-group-name circleci-thuannd --description "My demo deployment" --s3-location bucket=codedeploy-thuannd/Build,bundleType=zip,key=data.zip
             fi
