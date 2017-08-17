@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: infrastructureascode/aws-cli
+      - image: infrastructure-as-code/docker-aws-cli
         environment:
           APP_ENV: local
           APP_DEBUG: true
@@ -23,7 +23,7 @@ jobs:
     steps:
       - run:
           name: Install System Packages
-          command: sudo apt-get update && sudo apt-get -y install git unzip zlib1g-dev
+          command: apt-get update && apt-get -y install git unzip zlib1g-dev
       - checkout
       - run:
           name: Install PHP Extensions
