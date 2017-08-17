@@ -73,7 +73,7 @@ jobs:
           name: config aws
           command: |
               aws configure 
-              ${aws_access_key_id}
+              ${MYSQL_DATABASE}
               ${aws_secret_access_key}
               ${region}
       - deploy:
