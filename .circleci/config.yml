@@ -63,13 +63,6 @@ jobs:
             if [ "${CIRCLE_BRANCH}" == "master" ]; then 
               aws s3 cp /tmp/artifacts/data.zip s3://codedeploy-thuannd/Build/data.zip
             fi
-      - run:
-          name: config aws
-          command: |
-              aws configure
-              ${MYSQL_DATABASE}
-              ${aws_secret_access_key}
-              ${region}
       - deploy:
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
