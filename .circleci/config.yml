@@ -23,7 +23,7 @@ jobs:
     steps:
       - run:
           name: Install System Packages
-          command: sudo apt-get update && apt-get -y install git unzip zlib1g-dev
+          command: sudo apt-get update && sudo apt-get -y install git unzip zlib1g-dev
       - checkout
       - run:
           name: Install PHP Extensions
